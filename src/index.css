@@ -13,3 +13,28 @@ body {
 #root {
   padding: 20px;
 }
+h2 {
+  font-size: 25px;
+  color: DarkOliveGreen;
+}
+
+.load {
+  max-width: 80%;
+  margin: 10px auto;
+  background-color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  padding: 25px;
+}
+.table {
+  margin: 0 auto;
+  text-align: left;
+}
+.table tr:nth-child(2n) {
+  background-color: #e1e1e1;
+}
+.table th,
+.table td {
+  padding: 5px 10px;
+  margin: 5px;
+}

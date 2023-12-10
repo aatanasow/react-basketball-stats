@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 import { stringToArray, arrayToMatrix } from "./utils/data";
+import UserTable from "./components/pages/DataTable";
 
 function App() {
   const [data, setData] = useState([]);
+  const head = ["Player name", "Team", "Time played", "Scored points"];
 
   function handleFileUpload(e) {
     e.preventDefault();
@@ -39,8 +41,11 @@ function App() {
 
   return (
     <div className="App">
-      <input type="file" onChange={handleFileUpload} />
-      {data}
+      <div className="load">
+        <input type="file" onChange={handleFileUpload} />
+      </div>
+
+      <UserTable data={data} head={head} title="General stats" />
     </div>
   );
 }
