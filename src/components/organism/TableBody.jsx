@@ -4,8 +4,8 @@ import TableRow from "../molecules/TableRow";
 const TableBody = ({ data }) => {
   return (
     <tbody>
-      {data.map((entry) => (
-        <TableRow data={entry} key={entry[0]} />
+      {data.map((entry, index) => (
+        <TableRow data={entry} key={entry[0] + index} />
       ))}
     </tbody>
   );

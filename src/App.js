@@ -1,7 +1,12 @@
 import { useState } from "react";
 import "./App.css";
 import { stringToArray, arrayToMatrix } from "./utils/data";
-import UserTable from "./components/pages/DataTable";
+import UnsortedTable from "./components/pages/UnsortedTable";
+import TopPointsPerGameTable from "./components/pages/TopPointsPerGameTable";
+import TopPointsPerMinutesTable from "./components/pages/TopPointsPerMinutesTable";
+import TopPointsByTeamTable from "./components/pages/TopPointsByTeamTable";
+import TopPointsByPlayerTable from "./components/pages/TopPointsByPlayerTable";
+import TopPlayerByTeamTable from "./components/pages/TopPlayerByTeamTable";
 
 function App() {
   const [data, setData] = useState([]);
@@ -16,12 +21,12 @@ function App() {
     reader.readAsText(file);
 
     reader.onload = function () {
-      console.log(reader.result);
+      //console.log(reader.result);
       const dataArray = stringToArray(reader.result);
       const dataMatrix = arrayToMatrix(dataArray);
 
       //console.log(dataArray);
-      console.log(dataMatrix);
+      //console.log(dataMatrix);
 
       dataMatrix.forEach((row, index) => {
         if (row.length !== 4) {
@@ -45,7 +50,36 @@ function App() {
         <input type="file" onChange={handleFileUpload} />
       </div>
 
-      <UserTable data={data} head={head} title="General stats" />
+      {!!data.length && (
+        <>
+          <UnsortedTable data={data} head={head} title="General stats" />
+          <TopPointsPerGameTable
+            data={data}
+            head={head}
+            title="Top points per game"
+          />
+          <TopPointsByPlayerTable
+            data={data}
+            head={head}
+            title="Top points per player"
+          />
+          <TopPointsPerMinutesTable
+            data={data}
+            head={head}
+            title="Top points per minutes"
+          />
+          <TopPointsByTeamTable
+            data={data}
+            head={head}
+            title="Top points by team"
+          />
+          <TopPlayerByTeamTable
+            data={data}
+            head={head}
+            title="Top player from every team (by points)"
+          />
+        </>
+      )}
     </div>
   );
 }

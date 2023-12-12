@@ -5,3 +5,7 @@ Hristo Hristov, Dunav Ruse, 60, 18
 Hristo Hristov, Dunav Ruse, 160, 18
 Mitko Matinov, Luckoil Neftohimik, 160, 40
 Marin Kolev, Cherno More Varna, 120, 29
+Petar Petrov, Cherno More Varna, 250, 17
+Najden Mitrofanov, Luckoil Neftohimik, 320, 30
+Stanimir Stoilov, Luckoil Neftohimik, 170, 25
+Marin Kolev, Cherno More Varna, 120, 8
