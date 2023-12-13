@@ -7,9 +7,13 @@ import TopPointsPerMinutesTable from "./components/pages/TopPointsPerMinutesTabl
 import TopPointsByTeamTable from "./components/pages/TopPointsByTeamTable";
 import TopPointsByPlayerTable from "./components/pages/TopPointsByPlayerTable";
 import TopPlayerByTeamTable from "./components/pages/TopPlayerByTeamTable";
+import Modal from "./components/organism/Modal";
+import { openModal } from "./utils/modal";
 
 function App() {
   const [data, setData] = useState([]);
+  const [err, setErr] = useState([]);
+
   const head = ["Player name", "Team", "Time played", "Scored points"];
 
   function handleFileUpload(e) {
@@ -35,9 +39,11 @@ function App() {
       });
 
       if (errors.length) {
+        setErr(errors);
         errors.forEach((error) =>
           console.error(`Data on row ${error} is invalid`)
         );
+        openModal();
       }
 
       setData(dataMatrix);
@@ -50,7 +56,8 @@ function App() {
         <input type="file" onChange={handleFileUpload} />
       </div>
 
-      {!!data.length && (
+      <Modal errors={err} />
+      {!!data.length && !err.length && (
         <>
           <UnsortedTable data={data} head={head} title="General stats" />
           <TopPointsPerGameTable

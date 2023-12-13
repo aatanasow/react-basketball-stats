@@ -43,12 +43,13 @@ function getTopPlayersByTeam(data) {
   const playersByTeam = data.reduce((acc, current) => {
     if (acc[current[1]]) {
       let elIndex = -1;
-      for (let i = 0; i < acc[current[1]].length; i++) {
-        if (acc[current[1]][i][0] === current[0]) {
-          elIndex = i;
+      for (let [el, index] of acc[current[1]]) {
+        if (el[0] === current[0]) {
+          elIndex = index;
           break;
         }
       }
+
       if (elIndex > -1) {
         acc[current[1]][elIndex][1] = acc[current[1]][elIndex][1] + +current[3];
       } else {
@@ -65,7 +66,7 @@ function getTopPlayersByTeam(data) {
   const topPlayersByTeam = [];
   for (let team of teams) {
     const sorted = sortData(team[1], 1);
-    topPlayersByTeam.push([team[0], sorted[0][0], sorted[0][1]]);
+    topPlayersByTeam.push([sorted[0][0], team[0], sorted[0][1]]);
   }
   return topPlayersByTeam;
 }

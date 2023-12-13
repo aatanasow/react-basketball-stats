@@ -8,7 +8,7 @@ const TopPlayerByTeamTable = ({ data, head, title }) => {
   const sortedData = sortData(topPlayersByTeam, 2);
 
   const [playerTitle, teamTitle, , pointsTitle] = head;
-  const modifiedHead = [teamTitle, playerTitle, pointsTitle];
+  const modifiedHead = [playerTitle, teamTitle, pointsTitle];
 
   return (
     <>
