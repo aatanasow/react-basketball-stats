@@ -1,0 +1,68 @@
+[
+  {
+    "Player name": "Ivan Ivanov",
+    "Team": "Dunav Ruse",
+    "Time played": 600,
+    "Scored points": 14
+  },
+  {
+    "Player name": "Marin Kolev",
+    "Team": "Cherno More Varna",
+    "Time played": 820,
+    "Scored points": 12
+  },
+  {
+    "Player name": "Stanimir Stoilov",
+    "Team": "Luckoil Neftohimik",
+    "Time played": 250,
+    "Scored points": 20
+  },
+  {
+    "Player name": "Hristo Hristov",
+    "Team": "Dunav Ruse",
+    "Time played": 60,
+    "Scored points": 18
+  },
+  {
+    "Player name": "Hristo Hristov",
+    "Team": "Dunav Ruse",
+    "Time played": 160,
+    "Scored points": 18
+  },
+  {
+    "Player name": "Mitko Matinov",
+    "Team": "Luckoil Neftohimik",
+    "Time played": 160,
+    "Scored points": 40
+  },
+  {
+    "Player name": "Marin Kolev",
+    "Team": "Cherno More Varna",
+    "Time played": 120,
+    "Scored points": 29
+  },
+  {
+    "Player name": "Petar Petrov",
+    "Team": "Cherno More Varna",
+    "Time played": 250,
+    "Scored points": 17
+  },
+  {
+    "Player name": "Najden Mitrofanov",
+    "Team": "Luckoil Neftohimik",
+    "Time played": 320,
+    "Scored points": 30
+  },
+  {
+    "Player name": "Stanimir Stoilov",
+    "Team": "Luckoil Neftohimik",
+    "Time played": 170,
+    "Scored points": 25
+  },
+  {
+    "Player name": "Marin Kolev",
+    "Team": "Cherno More Varna",
+    "Time played": 120,
+    "Scored points": 8
+  }
+]

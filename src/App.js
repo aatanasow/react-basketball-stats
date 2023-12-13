@@ -1,6 +1,11 @@
 import { useState } from "react";
 import "./App.css";
-import { stringToArray, arrayToMatrix } from "./utils/data";
+import {
+  stringToArray,
+  arrayToMatrix,
+  isJson,
+  jsonToArray,
+} from "./utils/data";
 import UnsortedTable from "./components/pages/UnsortedTable";
 import TopPointsPerGameTable from "./components/pages/TopPointsPerGameTable";
 import TopPointsPerMinutesTable from "./components/pages/TopPointsPerMinutesTable";
@@ -25,18 +30,23 @@ function App() {
     reader.readAsText(file);
 
     reader.onload = function () {
-      //console.log(reader.result);
-      const dataArray = stringToArray(reader.result);
-      const dataMatrix = arrayToMatrix(dataArray);
+      let dataMatrix = [];
+      if (isJson(reader.result)) {
+        console.log("JSON");
+
+        dataMatrix = jsonToArray(reader.result);
+      } else {
+        const dataArray = stringToArray(reader.result);
+        dataMatrix = arrayToMatrix(dataArray);
+        dataMatrix.forEach((row, index) => {
+          if (row.length !== 4) {
+            errors.push(index + 1);
+          }
+        });
+      }
 
       //console.log(dataArray);
       //console.log(dataMatrix);
-
-      dataMatrix.forEach((row, index) => {
-        if (row.length !== 4) {
-          errors.push(index + 1);
-        }
-      });
 
       if (errors.length) {
         setErr(errors);
