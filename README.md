@@ -1,6 +1,6 @@
 # React basketball stats App
 
-The App loads data form CSV file and show the following stats:
+The App loads data form CSV or JSON file and show the following stats:
 
 - most points scored in one match.
 - most points scored in all matches.
