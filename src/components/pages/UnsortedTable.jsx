@@ -1,16 +1,12 @@
 import React from "react";
-import TableHead from "../organism/TableHead";
-import TableBody from "../organism/TableBody";
+import Title from "../atoms/Title";
+import Table from "../organism/Table";
 
 const UnsortedTable = ({ data, head, title }) => {
   return (
     <>
-      <h2>{title}</h2>
-      <hr />
-      <table className="table">
-        <TableHead data={head} />
-        <TableBody data={data} />
-      </table>
+      <Title title={title} />
+      <Table head={head} data={data} />
     </>
   );
 };

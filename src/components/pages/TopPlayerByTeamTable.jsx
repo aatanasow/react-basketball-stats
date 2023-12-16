@@ -1,7 +1,7 @@
 import React from "react";
-import TableHead from "../organism/TableHead";
-import TableBody from "../organism/TableBody";
 import { sortData, getTopPlayersByTeam } from "../../utils/sorting";
+import Title from "../atoms/Title";
+import Table from "../organism/Table";
 
 const TopPlayerByTeamTable = ({ data, head, title }) => {
   const topPlayersByTeam = getTopPlayersByTeam(data);
@@ -12,12 +12,8 @@ const TopPlayerByTeamTable = ({ data, head, title }) => {
 
   return (
     <>
-      <h2>{title}</h2>
-      <hr />
-      <table className="table">
-        <TableHead data={modifiedHead} />
-        <TableBody data={sortedData} />
-      </table>
+      <Title title={title} />
+      <Table head={modifiedHead} data={sortedData} />
     </>
   );
 };

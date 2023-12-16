@@ -1,11 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import {
-  stringToArray,
-  arrayToMatrix,
-  isJson,
-  jsonToArray,
-} from "./utils/data";
 import UnsortedTable from "./components/pages/UnsortedTable";
 import TopPointsPerGameTable from "./components/pages/TopPointsPerGameTable";
 import TopPointsPerMinutesTable from "./components/pages/TopPointsPerMinutesTable";
@@ -13,7 +7,8 @@ import TopPointsByTeamTable from "./components/pages/TopPointsByTeamTable";
 import TopPointsByPlayerTable from "./components/pages/TopPointsByPlayerTable";
 import TopPlayerByTeamTable from "./components/pages/TopPlayerByTeamTable";
 import Modal from "./components/organism/Modal";
-import { openModal } from "./utils/modal";
+import { readFile } from "./utils/file";
+import FileUpload from "./components/atoms/FileUpload";
 
 function App() {
   const [data, setData] = useState([]);
@@ -23,48 +18,14 @@ function App() {
 
   function handleFileUpload(e) {
     e.preventDefault();
-    const file = e.target.files[0];
-    const errors = [];
-
-    const reader = new FileReader();
-    reader.readAsText(file);
-
-    reader.onload = function () {
-      let dataMatrix = [];
-      if (isJson(reader.result)) {
-        console.log("JSON");
-
-        dataMatrix = jsonToArray(reader.result);
-      } else {
-        const dataArray = stringToArray(reader.result);
-        dataMatrix = arrayToMatrix(dataArray);
-        dataMatrix.forEach((row, index) => {
-          if (row.length !== 4) {
-            errors.push(index + 1);
-          }
-        });
-      }
-
-      //console.log(dataArray);
-      //console.log(dataMatrix);
-
-      if (errors.length) {
-        setErr(errors);
-        errors.forEach((error) =>
-          console.error(`Data on row ${error} is invalid`)
-        );
-        openModal();
-      }
-
-      setData(dataMatrix);
-    };
+    readFile(e)
+      .then((result) => setData(result))
+      .catch((err) => setErr(err));
   }
 
   return (
     <div className="App">
-      <div className="load">
-        <input type="file" onChange={handleFileUpload} />
-      </div>
+      <FileUpload changeHandler={handleFileUpload} />
 
       <Modal errors={err} />
       {!!data.length && !err.length && (
