@@ -17,7 +17,7 @@ body {
 h2 {
   font-size: 25px;
   color: DarkOliveGreen;
-  margin-top: 140px;
+  margin-top: 50px;
 }
 
 .load {
@@ -79,4 +79,28 @@ h2 {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+.nav {
+  margin: 50px 50px 20px;
+  padding: 10px 5px;
+  background-color: #e1e1e1;
+}
+.nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+}
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+}
+.nav a:hover {
+  text-decoration: underline;
+  color: rgb(110, 14, 14);
 }

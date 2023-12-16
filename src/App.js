@@ -9,6 +9,8 @@ import TopPlayerByTeamTable from "./components/pages/TopPlayerByTeamTable";
 import Modal from "./components/organism/Modal";
 import { readFile } from "./utils/file";
 import FileUpload from "./components/atoms/FileUpload";
+import { Route, Routes } from "react-router-dom";
+import Menu from "./components/organism/Menu";
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,37 +29,73 @@ function App() {
     <div className="App">
       <FileUpload changeHandler={handleFileUpload} />
 
-      <Modal errors={err} />
       {!!data.length && !err.length && (
-        <>
-          <UnsortedTable data={data} head={head} title="General stats" />
-          <TopPointsPerGameTable
-            data={data}
-            head={head}
-            title="Top points per game"
-          />
-          <TopPointsByPlayerTable
-            data={data}
-            head={head}
-            title="Top points per player"
-          />
-          <TopPointsPerMinutesTable
-            data={data}
-            head={head}
-            title="Top points per minutes"
-          />
-          <TopPointsByTeamTable
-            data={data}
-            head={head}
-            title="Top points by team"
-          />
-          <TopPlayerByTeamTable
-            data={data}
-            head={head}
-            title="Top player from every team (by points)"
-          />
-        </>
+        <Routes>
+          <Route path="/" element={<Menu />}>
+            <Route
+              path=""
+              element={
+                <UnsortedTable data={data} head={head} title="General stats" />
+              }
+            />
+
+            <Route
+              path="point-per-game"
+              element={
+                <TopPointsPerGameTable
+                  data={data}
+                  head={head}
+                  title="Top points per game"
+                />
+              }
+            />
+
+            <Route
+              path="points-by-player"
+              element={
+                <TopPointsByPlayerTable
+                  data={data}
+                  head={head}
+                  title="Top points per player"
+                />
+              }
+            />
+
+            <Route
+              path="points-per-minutes"
+              element={
+                <TopPointsPerMinutesTable
+                  data={data}
+                  head={head}
+                  title="Top points per minutes"
+                />
+              }
+            />
+            <Route
+              path="points-by-team"
+              element={
+                <TopPointsByTeamTable
+                  data={data}
+                  head={head}
+                  title="Top points by team"
+                />
+              }
+            />
+            <Route
+              path="top-player-by-team"
+              element={
+                <TopPlayerByTeamTable
+                  data={data}
+                  head={head}
+                  title="Top player from every team (by points)"
+                />
+              }
+            />
+          </Route>
+        </Routes>
       )}
+
+      <Modal errors={err} />
     </div>
   );
 }
