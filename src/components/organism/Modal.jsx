@@ -6,7 +6,7 @@ const Modal = ({ errors }) => {
       <div className="modal-content">
         <span className="close">&times;</span>
         {errors.map((error) => (
-          <p>{`Data on row ${error} is invalid`}</p>
+          <p key={error}>{`Data on row ${error} is invalid`}</p>
         ))}
       </div>
     </div>

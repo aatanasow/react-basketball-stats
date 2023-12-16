@@ -1,6 +1,6 @@
 function openModal() {
-  var modal = document.querySelector(".modal");
-  var span = document.getElementsByClassName("close")[0];
+  const modal = document.querySelector(".modal");
+  const span = document.getElementsByClassName("close")[0];
 
   span.onclick = function () {
     modal.style.display = "none";
